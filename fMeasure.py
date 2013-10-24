@@ -72,6 +72,8 @@ def majorityForCluster(clusters, answers):
 
 			counts[c][answers[v]] = counts[c][answers[v]] + 1
 	
+	print counts
+
 	for c in counts:
 		majority = 0
 		amax      = 0
@@ -101,13 +103,32 @@ def genSuggested(clusters, majorities, size):
 
 #########################################################
 def calcFMeasure(assignments, answers):
-	clusters   = cluster(assignments)
-	majorities = majorityForCluster(clusters, answers)
-	suggested  = genSuggested(clusters, majorities, len(answers))
+	a = 0
+	b = 0
+	c = 0
+	d = 0
 
-	
+	for i1 in range(0,len(answers)):
+		for i2 in range(0, len(answers)):
+			print (assignments[i1], assignments[i2], answers[i1], answers[i2])
 
-	return 1
+			if   assignments[i1] == assignments[i2] and answers[i1] == answers[i2]:
+				a = a + 1
+			elif assignments[i1] != assignments[i2] and answers[i1] != answers[i2]:
+				b = b + 1
+			elif assignments[i1] == assignments[i2] and answers[i1] != answers[i2]:
+				c = c + 1
+			elif assignments[i1] != assignments[i2] and answers[i1] == answers[i2]:
+				d = d + 1
+			else:
+				print "Holly Cow Somthing is Wrong!!"
+
+			print (a,b,c,d)
+
+	p = a / float(a+c)
+	r = a / float(a+d)
+
+	return (2*p*r) / (p + r)
 
 #########################################################
 
