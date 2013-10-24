@@ -110,8 +110,6 @@ def calcFMeasure(assignments, answers):
 
 	for i1 in range(0,len(answers)):
 		for i2 in range(0, len(answers)):
-			print (assignments[i1], assignments[i2], answers[i1], answers[i2])
-
 			if   assignments[i1] == assignments[i2] and answers[i1] == answers[i2]:
 				a = a + 1
 			elif assignments[i1] != assignments[i2] and answers[i1] != answers[i2]:
@@ -122,8 +120,6 @@ def calcFMeasure(assignments, answers):
 				d = d + 1
 			else:
 				print "Holly Cow Somthing is Wrong!!"
-
-			print (a,b,c,d)
 
 	p = a / float(a+c)
 	r = a / float(a+d)
